@@ -1,0 +1,39 @@
+body {
+    background-color: azure;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+header {
+    background-color: cornflowerblue;
+    border-radius: 10px;
+    padding: 3%;
+}
+
+#choices {
+    text-align: center;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-kerning: none;
+    letter-spacing: 0.0625em;
+    word-spacing: 0.0625em;
+    color: #ffffff;
+}
+
+button {
+    margin-top: 3%;
+    border-radius: 5px;
+    border: solid #ffffff;
+    width: 90px;
+    height: 40px;
+    color: #ffffff;
+    background-color: cornflowerblue;
+}
+
+#result {
+ text-align: center;
+ align-content: center;
+}
