@@ -1,9 +1,12 @@
 // Something to come 
 
 // Variables
-var botChoice = getChoice();
-console.log(botChoice);
+var botChoice;
 var userChoice;
+var displayRule = false;
+var choices = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
+var choiceRules = [" crushes ", [" covers ", " disproves "], [" cuts ", " decapitates "], [" eats ", " poisons "], [" vaporizes ", " smashes "]];
+
 
 // Declare controls/buttons (numbering follows order)
 const rock = document.getElementById("rock");
@@ -48,22 +51,59 @@ function evaluate() {
 
     if (userChoice === botChoice) {
         resultOutput.textContent = "It is a tie!";
-    } else if (userChoice === 1 && botChoice === 4) {
-        resultOutput.textContent = "You win!";
+        displayRuleMessage();
+    } else if (userChoice === 1 && (botChoice === 3 || botChoice === 4)) {
+        displayWinWinMessage(true);
     } else if (userChoice === 2 && (botChoice === 1 || botChoice === 5)) {
-        resultOutput.textContent = "You win!";
+        displayWinWinMessage(true);
     } else if (userChoice === 3 && (botChoice === 2 || botChoice === 4)) {
-        resultOutput.textContent = "You win!";
+        displayWinWinMessage(true);
     } else if (userChoice === 4 && (botChoice === 2 || botChoice === 5)) {
-        resultOutput.textContent = "You win!";
+        displayWinWinMessage(true);
     } else if (userChoice === 5 && (botChoice === 1 || botChoice === 3)) {
-        resultOutput.textContent = "You win!";
+        displayWinWinMessage(true);
     } else {
-        resultOutput.textContent = "Bot wins!";
+        displayWinWinMessage(false);
     }
 }
 
 // Get a random between 1 and 5
 function getChoice() {
     return Math.floor(Math.random() * 5 + 1);
+}
+
+function displayWinWinMessage(winWin) {
+    resultOutput.textContent = (winWin) ? "You win!" : "Bot wins!";
+    displayRuleMessage();
+}
+
+function toggleDisplayRule() {
+    displayRule = !displayRule;
+    displayRuleMessage();
+}
+
+// Displays 
+function displayRuleMessage() {
+    var display = document.getElementById("rule-display");
+
+    if (displayRule && userChoice > 0) {
+        var winner;
+        var notWinner;
+        if (resultOutput.innerText === "You win!") {
+            winner = userChoice;
+            notWinner = botChoice;
+        } else if (resultOutput.innerText === "Bot wins!") {
+            winner = botChoice;
+            notWinner = userChoice;
+        }
+
+        // Make sure it is not tie
+        var rule = (userChoice !== botChoice) ? (choices[winner - 1] + choiceRules[winner - 1][(notWinner < 3) ? 0 : 1] + choices[notWinner - 1]) : "...";
+        var playerChoice = "<br><small> You: " + choices[userChoice - 1] + " | Bot: " + choices[botChoice - 1] + "</small>";
+
+        display.style.display = "block";
+        display.innerHTML = rule + playerChoice;
+    } else {
+        display.style.display = "none";
+    }
 }
