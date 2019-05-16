@@ -21,33 +21,29 @@ const resultOutput = document.getElementById("result-output");
 rock.addEventListener("click", function () {
     userChoice = 1;
     evaluate();
-    console.log(userChoice, botChoice);
 });
 paper.addEventListener("click", function () {
     userChoice = 2;
     evaluate();
-    console.log(userChoice, botChoice);
 });
 
 scissor.addEventListener("click", function () {
     userChoice = 3;
     evaluate();
-    console.log(userChoice, botChoice);
 });
 lizard.addEventListener("click", function () {
     userChoice = 4;
     evaluate();
-    console.log(userChoice, botChoice);
 });
 spock.addEventListener("click", function () {
     userChoice = 5;
     evaluate();
-    console.log(userChoice, botChoice);
 });
 
 // Evaluates the choices of both
 function evaluate() {
     botChoice = getChoice();
+    console.log(userChoice, botChoice);
 
     if (userChoice === botChoice) {
         resultOutput.textContent = "It is a tie!";
@@ -72,17 +68,19 @@ function getChoice() {
     return Math.floor(Math.random() * 5 + 1);
 }
 
+// Displays winner/messages
 function displayWinWinMessage(winWin) {
     resultOutput.textContent = (winWin) ? "You win!" : "Bot wins!";
     displayRuleMessage();
 }
 
+// Toggles the display of rule message
 function toggleDisplayRule() {
     displayRule = !displayRule;
     displayRuleMessage();
 }
 
-// Displays 
+// Displays the selected rule
 function displayRuleMessage() {
     var display = document.getElementById("rule-display");
 
