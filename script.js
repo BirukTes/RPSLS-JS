@@ -5,7 +5,7 @@ var botChoice;
 var userChoice;
 var displayRule = false;
 var choices = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
-var choiceRules = [" crushes ", [" covers ", " disproves "], [" cuts ", " decapitates "], [" eats ", " poisons "], [" vaporizes ", " smashes "]];
+var choiceRules = [[" crushes ", " crushes "], [" covers ", " disproves "], [" cuts ", " decapitates "], [" eats ", " poisons "], [" vaporizes ", " smashes "]];
 
 
 // Declare controls/buttons (numbering follows order)
